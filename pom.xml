@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jommobile.server</groupId>
+    <artifactId>appengine-core-lib</artifactId>
+    <version>1.0.0-alpha3</version>
+
+    <prerequisites>
+        <maven>3.5</maven>
+    </prerequisites>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- Third party libs versions -->
+        <appengine.api.sdk.version>1.9.74</appengine.api.sdk.version>
+        <google.cloud.bom.version>0.94.0-alpha</google.cloud.bom.version>
+        <endpoints.framework.version>2.2.1</endpoints.framework.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Google Cloud Java Version Management -->
+            <!-- See https://github.com/GoogleCloudPlatform/google-cloud-java#version-management -->
+            <dependency>
+                <groupId>com.google.cloud</groupId>
+                <artifactId>google-cloud-bom</artifactId>
+                <version>${google.cloud.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Compile/runtime dependencies -->
+        <!-- [START servlet] -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <!-- [END servlet] -->
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <!-- Compile/runtime dependencies -->
+        <!-- App Engine SDK dependency : only required if you need to explicitly use App Engine API -->
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+            <version>${appengine.api.sdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.endpoints</groupId>
+            <artifactId>endpoints-framework</artifactId>
+            <version>${endpoints.framework.version}</version>
+        </dependency>
+
+        <!-- GCS client libs -->
+        <!-- No need to specify version cos we have BOM version management above -->
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-storage</artifactId>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>com.googlecode.objectify</groupId>-->
+        <!--<artifactId>objectify</artifactId>-->
+        <!--<version>${objectify.version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+        <!--<groupId>com.google.guava</groupId>-->
+        <!--<artifactId>guava</artifactId>-->
+        <!--<version>${guava.version}</version>-->
+        <!--</dependency>-->
+    </dependencies>
+
+    <!-- To build maven local repository correctly -->
+    <!-- See https://stackoverflow.com/a/40309711/857346 -->
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>./</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                            <outputDirectory>target</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <pomFile>target/pom.xml</pomFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
