@@ -4,7 +4,7 @@
 
     <groupId>com.jommobile.server</groupId>
     <artifactId>appengine-core-lib</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <prerequisites>
         <maven>3.5</maven>
@@ -215,7 +215,7 @@
         <connection>scm:git:git://github.com/maohieng/appengine-core-lib.git</connection>
         <developerConnection>scm:git:git@github.com:maohieng/appengine-core-lib.git</developerConnection>
         <url>https://github.com/maohieng/appengine-core-lib</url>
-        <tag>appengine-core-lib-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <profiles>
