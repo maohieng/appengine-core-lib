@@ -8,7 +8,8 @@ package com.jommobile.appengine.db;
  */
 public enum StorageType {
     DATASTORE("datastore"),
-    CLOUDSQL("cloudsql");
+    CLOUDSQL("cloudsql"),
+    FIRESTORE("firestore");
 
     private final String name;
 
@@ -24,6 +25,8 @@ public enum StorageType {
     public static StorageType of(String name) {
         if (name != null && !name.isEmpty())
             switch (name) {
+                case "firestore":
+                    return FIRESTORE;
                 case "datastore":
                     return DATASTORE;
                 case "cloudsql":
