@@ -22,20 +22,24 @@ public class Image extends StorageBlob {
      * Default constructor.
      **/
     public Image() {
-        this(null, null);
+        super(null, null);
     }
 
     public Image(String link, String blob) {
         super(link, blob);
     }
 
+    public Image(String link, String blob, String thumbnail) {
+        this(link, blob);
+        this.thumbnail = thumbnail;
+    }
+
     public Image(@Nonnull Blob blob) {
         super(blob);
     }
 
-    Image(String link, String blob, String thumbnail) {
-        this(link, blob);
-        this.thumbnail = thumbnail;
+    public Image(@Nonnull Blob blob, String thumbnail) {
+        this(blob.getMediaLink(), blob.getName(), thumbnail);
     }
 //
 //    /**

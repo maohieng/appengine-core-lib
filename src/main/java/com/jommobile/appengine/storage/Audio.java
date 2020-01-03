@@ -20,7 +20,7 @@ public class Audio extends StorageBlob {
      * Default constructor.
      **/
     public Audio() {
-        this(null, null);
+        super(null, null);
     }
 
     public Audio(String link, String blob) {
