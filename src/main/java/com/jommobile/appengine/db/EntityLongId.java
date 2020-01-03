@@ -10,7 +10,9 @@ import java.util.Date;
  * <p>
  *
  * </p>
+ * @deprecated use {@link Entity} and combine with {@link StringId} or {@link LongId}.
  */
+@Deprecated
 public interface EntityLongId extends LongId {
 
     public void initForDB();

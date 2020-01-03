@@ -4,7 +4,7 @@
 
     <groupId>com.jommobile.server</groupId>
     <artifactId>appengine-core-lib</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <prerequisites>
         <maven>3.5</maven>
