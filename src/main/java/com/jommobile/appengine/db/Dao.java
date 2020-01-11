@@ -9,8 +9,6 @@ import java.util.Map;
 
 public interface Dao<T, K> {
 
-    T loadById(long id, Object parentKeyOrEntity);
-
     T loadByKey(K key);
 
     K save(T entity);

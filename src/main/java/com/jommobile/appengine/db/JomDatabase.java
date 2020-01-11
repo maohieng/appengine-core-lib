@@ -24,7 +24,7 @@ public abstract class JomDatabase {
         this.migrationContainer = b.migrationContainer;
     }
 
-    public abstract Object createKeyOf(Class<?> kindClass, long id, @Nullable Object parentKey);
+    public abstract Object createKeyOf(Class<?> kindClass, String id, @Nullable Object parentKey);
 
     public abstract Class<?> getParentKindOf(Class<?> entityClass);
 

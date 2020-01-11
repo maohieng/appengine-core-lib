@@ -8,6 +8,4 @@ package com.jommobile.appengine.db;
  */
 public class JomKey {
 
-
-
 }
